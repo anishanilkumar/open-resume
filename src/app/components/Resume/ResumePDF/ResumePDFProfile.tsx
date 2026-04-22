@@ -20,8 +20,8 @@ export const ResumePDFProfile = ({
   themeColor: string;
   isPDF: boolean;
 }) => {
-  const { name, email, phone, url, summary, location } = profile;
-  const iconProps = { email, phone, location, url };
+  const { name, email, phone, url, urlGithub, urlDrupal, summary, location } = profile;
+  const iconProps = { email, phone, location, url, urlGithub, urlDrupal };
 
   return (
     <ResumePDFSection style={{ marginTop: spacing["4"] }}>
@@ -35,9 +35,10 @@ export const ResumePDFProfile = ({
       {summary && <ResumePDFText>{summary}</ResumePDFText>}
       <View
         style={{
-          ...styles.flexRowBetween,
+          ...styles.flexRow,
           flexWrap: "wrap",
-          marginTop: spacing["0.5"],
+          marginTop: spacing["1"],
+          rowGap: spacing["2"],
         }}
       >
         {Object.entries(iconProps).map(([key, value]) => {
@@ -50,9 +51,13 @@ export const ResumePDFProfile = ({
             } else if (value.includes("linkedin")) {
               iconType = "url_linkedin";
             }
+          } else if (key === "urlGithub") {
+            iconType = "url_github";
+          } else if (key === "urlDrupal") {
+            iconType = "url_drupal";
           }
 
-          const shouldUseLinkWrapper = ["email", "url", "phone"].includes(key);
+          const shouldUseLinkWrapper = ["email", "url", "phone", "urlGithub", "urlDrupal"].includes(key);
           const Wrapper = ({ children }: { children: React.ReactNode }) => {
             if (!shouldUseLinkWrapper) return <>{children}</>;
 
@@ -85,6 +90,7 @@ export const ResumePDFProfile = ({
                 ...styles.flexRow,
                 alignItems: "center",
                 gap: spacing["1"],
+                width: "33.33%",
               }}
             >
               <ResumePDFIcon type={iconType} isPDF={isPDF} />

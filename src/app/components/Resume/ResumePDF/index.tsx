@@ -102,6 +102,7 @@ export const ResumePDF = ({
             color: DEFAULT_FONT_COLOR,
             fontFamily,
             fontSize: fontSize + "pt",
+            paddingTop: spacing[10],
           }}
         >
           {Boolean(settings.themeColor) && (
@@ -110,6 +111,7 @@ export const ResumePDF = ({
                 width: spacing["full"],
                 height: spacing[3.5],
                 backgroundColor: themeColor,
+                marginTop: "-" + spacing[10],
               }}
             />
           )}

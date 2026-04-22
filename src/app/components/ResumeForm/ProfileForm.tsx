@@ -7,7 +7,7 @@ import { ResumeProfile } from "lib/redux/types";
 export const ProfileForm = () => {
   const profile = useAppSelector(selectProfile);
   const dispatch = useAppDispatch();
-  const { name, email, phone, url, summary, location } = profile;
+  const { name, email, phone, url, urlGithub, urlDrupal, summary, location } = profile;
 
   const handleProfileChange = (field: keyof ResumeProfile, value: string) => {
     dispatch(changeProfile({ field, value }));
@@ -34,7 +34,7 @@ export const ProfileForm = () => {
         />
         <Input
           label="Email"
-          labelClassName="col-span-4"
+          labelClassName="col-span-full"
           name="email"
           placeholder="hello@khanacademy.org"
           value={email}
@@ -42,26 +42,42 @@ export const ProfileForm = () => {
         />
         <Input
           label="Phone"
-          labelClassName="col-span-2"
+          labelClassName="col-span-full"
           name="phone"
           placeholder="(123)456-7890"
           value={phone}
           onChange={handleProfileChange}
         />
         <Input
+          label="Location"
+          labelClassName="col-span-full"
+          name="location"
+          placeholder="NYC, NY"
+          value={location}
+          onChange={handleProfileChange}
+        />
+        <Input
           label="Website"
-          labelClassName="col-span-4"
+          labelClassName="col-span-full"
           name="url"
           placeholder="linkedin.com/in/khanacademy"
           value={url}
           onChange={handleProfileChange}
         />
         <Input
-          label="Location"
-          labelClassName="col-span-2"
-          name="location"
-          placeholder="NYC, NY"
-          value={location}
+          label="GitHub"
+          labelClassName="col-span-full"
+          name="urlGithub"
+          placeholder="github.com/username"
+          value={urlGithub}
+          onChange={handleProfileChange}
+        />
+        <Input
+          label="Drupal.org"
+          labelClassName="col-span-full"
+          name="urlDrupal"
+          placeholder="drupal.org/u/username"
+          value={urlDrupal}
           onChange={handleProfileChange}
         />
       </div>

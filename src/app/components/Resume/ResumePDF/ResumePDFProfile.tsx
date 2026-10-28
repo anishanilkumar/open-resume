@@ -38,7 +38,7 @@ export const ResumePDFProfile = ({
           ...styles.flexRow,
           flexWrap: "wrap",
           marginTop: spacing["1"],
-          rowGap: spacing["2"],
+          rowGap: 6,
         }}
       >
         {Object.entries(iconProps).map(([key, value]) => {
